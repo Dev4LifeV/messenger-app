@@ -19,6 +19,10 @@
 		CD32A3DD2944F92F00014749 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3DC2944F92F00014749 /* VideoPlayerViewController.swift */; };
 		CD32A3DF2944F95400014749 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3DE2944F95400014749 /* NewConversationViewController.swift */; };
 		CD32A3E12944F96C00014749 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3E02944F96C00014749 /* ProfileViewController.swift */; };
+		CD32A3E4294500E900014749 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3E3294500E900014749 /* Extensions.swift */; };
+		CD6E7307294CFA6300E4750A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */; };
+		CD6E730A294D028500E4750A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E7309294D028500E4750A /* FirebaseAuth */; };
+		CD6E730C294D028500E4750A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E730B294D028500E4750A /* FirebaseDatabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,8 @@
 		CD32A3DC2944F92F00014749 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		CD32A3DE2944F95400014749 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		CD32A3E02944F96C00014749 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CD32A3E3294500E900014749 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6E730C294D028500E4750A /* FirebaseDatabase in Frameworks */,
+				CD6E730A294D028500E4750A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +62,7 @@
 			children = (
 				CD32A3BB2944F38700014749 /* Messenger */,
 				CD32A3BA2944F38700014749 /* Products */,
+				DEE86580D2D5EE5C516BD890 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,11 +77,12 @@
 		CD32A3BB2944F38700014749 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */,
+				CD32A3D02944F6DE00014749 /* Controllers */,
 				CD32A3D42944F76400014749 /* Resources */,
 				CD32A3D32944F75500014749 /* ViewModels */,
 				CD32A3D22944F74500014749 /* Models */,
 				CD32A3D12944F6ED00014749 /* Views */,
-				CD32A3D02944F6DE00014749 /* Controllers */,
 				CD32A3CA2944F38900014749 /* Info.plist */,
 			);
 			path = Messenger;
@@ -82,8 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CD32A3C02944F38700014749 /* ConversationsViewController.swift */,
-				CD32A3D62944F8E700014749 /* LoginViewController.swift */,
-				CD32A3D82944F8FA00014749 /* RegisterViewController.swift */,
+				CD32A3E22944FB7400014749 /* Login */,
 				CD32A3DA2944F91A00014749 /* PhotoViewerViewController.swift */,
 				CD32A3DC2944F92F00014749 /* VideoPlayerViewController.swift */,
 				CD32A3DE2944F95400014749 /* NewConversationViewController.swift */,
@@ -120,6 +129,7 @@
 			children = (
 				CD32A3BC2944F38700014749 /* AppDelegate.swift */,
 				CD32A3BE2944F38700014749 /* SceneDelegate.swift */,
+				CD32A3E3294500E900014749 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -131,6 +141,22 @@
 				CD32A3C72944F38900014749 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CD32A3E22944FB7400014749 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CD32A3D62944F8E700014749 /* LoginViewController.swift */,
+				CD32A3D82944F8FA00014749 /* RegisterViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DEE86580D2D5EE5C516BD890 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +175,10 @@
 			dependencies = (
 			);
 			name = Messenger;
+			packageProductDependencies = (
+				CD6E7309294D028500E4750A /* FirebaseAuth */,
+				CD6E730B294D028500E4750A /* FirebaseDatabase */,
+			);
 			productName = Messenger;
 			productReference = CD32A3B92944F38700014749 /* Messenger.app */;
 			productType = "com.apple.product-type.application";
@@ -177,6 +207,9 @@
 				Base,
 			);
 			mainGroup = CD32A3B02944F38700014749;
+			packageReferences = (
+				CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CD32A3BA2944F38700014749 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -192,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD32A3C92944F38900014749 /* LaunchScreen.storyboard in Resources */,
+				CD6E7307294CFA6300E4750A /* GoogleService-Info.plist in Resources */,
 				CD32A3C62944F38900014749 /* Assets.xcassets in Resources */,
 				CD32A3C42944F38700014749 /* Main.storyboard in Resources */,
 			);
@@ -209,6 +243,7 @@
 				CD32A3DF2944F95400014749 /* NewConversationViewController.swift in Sources */,
 				CD32A3C12944F38700014749 /* ConversationsViewController.swift in Sources */,
 				CD32A3DD2944F92F00014749 /* VideoPlayerViewController.swift in Sources */,
+				CD32A3E4294500E900014749 /* Extensions.swift in Sources */,
 				CD32A3BD2944F38700014749 /* AppDelegate.swift in Sources */,
 				CD32A3E12944F96C00014749 /* ProfileViewController.swift in Sources */,
 				CD32A3BF2944F38700014749 /* SceneDelegate.swift in Sources */,
@@ -367,7 +402,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +431,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,6 +467,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD6E7309294D028500E4750A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CD6E730B294D028500E4750A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD32A3B12944F38700014749 /* Project object */;
 }
