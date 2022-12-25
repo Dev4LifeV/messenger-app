@@ -20,6 +20,7 @@
 		CD32A3DF2944F95400014749 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3DE2944F95400014749 /* NewConversationViewController.swift */; };
 		CD32A3E12944F96C00014749 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3E02944F96C00014749 /* ProfileViewController.swift */; };
 		CD32A3E4294500E900014749 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3E3294500E900014749 /* Extensions.swift */; };
+		CD514EFB294E40FC009A2314 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD514EFA294E40FC009A2314 /* DatabaseManager.swift */; };
 		CD6E7307294CFA6300E4750A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */; };
 		CD6E730A294D028500E4750A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E7309294D028500E4750A /* FirebaseAuth */; };
 		CD6E730C294D028500E4750A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E730B294D028500E4750A /* FirebaseDatabase */; };
@@ -41,6 +42,7 @@
 		CD32A3DE2944F95400014749 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		CD32A3E02944F96C00014749 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CD32A3E3294500E900014749 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CD514EFA294E40FC009A2314 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				CD32A3BC2944F38700014749 /* AppDelegate.swift */,
 				CD32A3BE2944F38700014749 /* SceneDelegate.swift */,
 				CD32A3E3294500E900014749 /* Extensions.swift */,
+				CD514EFA294E40FC009A2314 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD32A3D72944F8E700014749 /* LoginViewController.swift in Sources */,
+				CD514EFB294E40FC009A2314 /* DatabaseManager.swift in Sources */,
 				CD32A3D92944F8FB00014749 /* RegisterViewController.swift in Sources */,
 				CD32A3DF2944F95400014749 /* NewConversationViewController.swift in Sources */,
 				CD32A3C12944F38700014749 /* ConversationsViewController.swift in Sources */,
