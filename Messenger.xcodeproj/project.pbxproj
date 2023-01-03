@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0841F673AC1FAF7E7764CFBD /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4515D27D3078A5728489BF40 /* Pods_Messenger.framework */; };
 		CD32A3BD2944F38700014749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3BC2944F38700014749 /* AppDelegate.swift */; };
 		CD32A3BF2944F38700014749 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3BE2944F38700014749 /* SceneDelegate.swift */; };
 		CD32A3C12944F38700014749 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32A3C02944F38700014749 /* ConversationsViewController.swift */; };
@@ -24,9 +25,15 @@
 		CD6E7307294CFA6300E4750A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */; };
 		CD6E730A294D028500E4750A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E7309294D028500E4750A /* FirebaseAuth */; };
 		CD6E730C294D028500E4750A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CD6E730B294D028500E4750A /* FirebaseDatabase */; };
+		CDB9BB5D295CB9B900DA9716 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = CDB9BB5C295CB9B900DA9716 /* FacebookCore */; };
+		CDB9BB5F295CB9B900DA9716 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CDB9BB5E295CB9B900DA9716 /* FacebookLogin */; };
+		CDB9BB61295CB9B900DA9716 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = CDB9BB60295CB9B900DA9716 /* FacebookShare */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23322F315ADDFEEB3E3F754A /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
+		4515D27D3078A5728489BF40 /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		869A002764BEE6559A9558FB /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		CD32A3B92944F38700014749 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD32A3BC2944F38700014749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD32A3BE2944F38700014749 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +51,7 @@
 		CD32A3E3294500E900014749 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CD514EFA294E40FC009A2314 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CDB9BB5A295CB8C000DA9716 /* Messenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Messenger.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,20 +59,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB9BB5F295CB9B900DA9716 /* FacebookLogin in Frameworks */,
 				CD6E730C294D028500E4750A /* FirebaseDatabase in Frameworks */,
+				CDB9BB61295CB9B900DA9716 /* FacebookShare in Frameworks */,
 				CD6E730A294D028500E4750A /* FirebaseAuth in Frameworks */,
+				0841F673AC1FAF7E7764CFBD /* Pods_Messenger.framework in Frameworks */,
+				CDB9BB5D295CB9B900DA9716 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		125456346099F326411A419B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4515D27D3078A5728489BF40 /* Pods_Messenger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CD32A3B02944F38700014749 = {
 			isa = PBXGroup;
 			children = (
 				CD32A3BB2944F38700014749 /* Messenger */,
 				CD32A3BA2944F38700014749 /* Products */,
 				DEE86580D2D5EE5C516BD890 /* Pods */,
+				125456346099F326411A419B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +100,7 @@
 		CD32A3BB2944F38700014749 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				CDB9BB5A295CB8C000DA9716 /* Messenger.entitlements */,
 				CD6E7306294CFA6300E4750A /* GoogleService-Info.plist */,
 				CD32A3D02944F6DE00014749 /* Controllers */,
 				CD32A3D42944F76400014749 /* Resources */,
@@ -158,6 +180,8 @@
 		DEE86580D2D5EE5C516BD890 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				23322F315ADDFEEB3E3F754A /* Pods-Messenger.debug.xcconfig */,
+				869A002764BEE6559A9558FB /* Pods-Messenger.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -169,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD32A3CD2944F38900014749 /* Build configuration list for PBXNativeTarget "Messenger" */;
 			buildPhases = (
+				ED8762E6CBA412DBB973778E /* [CP] Check Pods Manifest.lock */,
 				CD32A3B52944F38700014749 /* Sources */,
 				CD32A3B62944F38700014749 /* Frameworks */,
 				CD32A3B72944F38700014749 /* Resources */,
@@ -181,6 +206,9 @@
 			packageProductDependencies = (
 				CD6E7309294D028500E4750A /* FirebaseAuth */,
 				CD6E730B294D028500E4750A /* FirebaseDatabase */,
+				CDB9BB5C295CB9B900DA9716 /* FacebookCore */,
+				CDB9BB5E295CB9B900DA9716 /* FacebookLogin */,
+				CDB9BB60295CB9B900DA9716 /* FacebookShare */,
 			);
 			productName = Messenger;
 			productReference = CD32A3B92944F38700014749 /* Messenger.app */;
@@ -212,6 +240,7 @@
 			mainGroup = CD32A3B02944F38700014749;
 			packageReferences = (
 				CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CDB9BB5B295CB9B900DA9716 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = CD32A3BA2944F38700014749 /* Products */;
 			projectDirPath = "";
@@ -235,6 +264,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ED8762E6CBA412DBB973778E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Messenger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD32A3B52944F38700014749 /* Sources */ = {
@@ -393,9 +447,11 @@
 		};
 		CD32A3CE2944F38900014749 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23322F315ADDFEEB3E3F754A /* Pods-Messenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 983TJC6U75;
@@ -422,9 +478,11 @@
 		};
 		CD32A3CF2944F38900014749 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 869A002764BEE6559A9558FB /* Pods-Messenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 983TJC6U75;
@@ -481,6 +539,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CDB9BB5B295CB9B900DA9716 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -493,6 +559,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CD6E7308294D028500E4750A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		CDB9BB5C295CB9B900DA9716 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDB9BB5B295CB9B900DA9716 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		CDB9BB5E295CB9B900DA9716 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDB9BB5B295CB9B900DA9716 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		CDB9BB60295CB9B900DA9716 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDB9BB5B295CB9B900DA9716 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
