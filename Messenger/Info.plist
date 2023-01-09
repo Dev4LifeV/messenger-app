@@ -2,21 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>GIDClientID</key>
+    <string>895966836883-86i8o6apcbm9q463m321p7164hidm76p.apps.googleusercontent.com</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+		<string>fb-messenger-share-api</string>
+	</array>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb544857194325589</string>
-      </array>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.895966836883-86i8o6apcbm9q463m321p7164hidm76p</string>
+          <string>fb544857194325589</string>
+        </array>
       </dict>
     </array>
-    <key>FacebookAppID</key>
-    <string>544857194325589</string>
-    <key>FacebookClientToken</key>
-    <string>cd246d7f5b1f4a897ba90c77aa2bef58</string>
-    <key>FacebookDisplayName</key>
-    <string>Messenger</string>
+	<key>FacebookAppID</key>
+	<string>544857194325589</string>
+	<key>FacebookClientToken</key>
+	<string>cd246d7f5b1f4a897ba90c77aa2bef58</string>
+	<key>FacebookDisplayName</key>
+	<string>Messenger</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please allow access to select a photo for your profile</string>
 	<key>NSCameraUsageDescription</key>
