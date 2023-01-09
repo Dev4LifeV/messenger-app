@@ -49,7 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="YzJ-pe-Dqc"/>
                     <connections>
-                        <outlet property="tableView" destination="b9y-AJ-ec2" id="o8r-aP-05x"/>
+                        <outlet property="tableView" destination="b9y-AJ-ec2" id="OlG-cm-yeT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5E-hj-wCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -78,7 +78,7 @@
         <!--Item 1-->
         <scene sceneID="kez-tA-Xsh">
             <objects>
-                <viewController id="9Zh-4r-b50" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="9Zh-4r-b50" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TNw-x0-bEF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
