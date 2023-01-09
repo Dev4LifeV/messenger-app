@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
+import FBSDKLoginKit
  
 class ProfileViewController: UIViewController {
     
@@ -42,21 +44,24 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let actionSheet = UIAlertController(
             title: "", message: "", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: {[weak self]_ in
-            
+             
             guard let strongSelf = self else { return }
+            
+            FBSDKLoginKit.LoginManager().logOut()
+            GIDSignIn.sharedInstance.signOut()
             
             do {
                 try FirebaseAuth.Auth.auth().signOut()
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+                
+                let vc = LoginViewController()
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                strongSelf.present(nav, animated: true)
             } catch {
                 print("Failed to log out: \(error.localizedDescription)")
             }
-            
-            strongSelf.navigationController?.dismiss(animated: true)
-            
-            let vc = LoginViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            strongSelf.present(nav, animated: true)
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
