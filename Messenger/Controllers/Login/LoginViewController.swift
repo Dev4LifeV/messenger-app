@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import Firebase
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
-
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -68,12 +70,15 @@ class LoginViewController: UIViewController {
     
     private let facebookButton: FBLoginButton = {
        let button = FBLoginButton()
-        button.permissions = ["email,public_profile"]
+        button.permissions = ["email", "public_profile"]
         return button
     }()
     
+    private let googleButton: GIDSignInButton = GIDSignInButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Log In"
         view.backgroundColor = .white
         
@@ -84,7 +89,7 @@ class LoginViewController: UIViewController {
         
         facebookButton.delegate = self
         
-        facebookButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(signInWithGoogle), for: .touchUpInside)
         
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
@@ -92,6 +97,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(facebookButton)
+        scrollView.addSubview(googleButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -105,6 +111,7 @@ class LoginViewController: UIViewController {
         loginButton.frame = CGRect(x: 30, y: passwordField.bottom + 10, width: scrollView.width - 60, height: 55)
         
         facebookButton.frame = CGRect(x: 30, y: loginButton.bottom + 10, width: scrollView.width - 60, height: 55)
+        googleButton.frame = CGRect(x: 30, y: facebookButton.bottom + 10, width: scrollView.width - 60, height: 55)
     }
     
     @objc private func loginButtonTapped() {
@@ -135,6 +142,34 @@ class LoginViewController: UIViewController {
             
             strongSelf.navigationController?.dismiss(animated: true)
             
+        }
+    }
+    
+   @objc func signInWithGoogle() {
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+            guard result != nil, error == nil else {
+                print("Failed to login with Google \(error?.localizedDescription)")
+                return
+            }
+            
+            guard let authResult = result else { return }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: authResult.user.idToken?.tokenString ?? "", accessToken: authResult.user.accessToken.tokenString)
+            
+            FirebaseAuth.Auth.auth().signIn(with: credential) { [weak self] result, error in
+                
+                print("ERROR: \(error?.localizedDescription)")
+                
+                guard result != nil, error == nil else {
+                    return
+                }
+                
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+            }
         }
     }
     
@@ -174,12 +209,12 @@ extension LoginViewController: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         guard let resultReturned = result else {
-            print("User failed to login with Facebook")
+            print("User failed to login with Facebook \(error?.localizedDescription)")
             return
         }
         
         guard let token = resultReturned.token?.tokenString else {
-            print("User failed to login with Facebook")
+            print("User failed to login with Facebook \(error?.localizedDescription)")
             return
         }
         
@@ -227,6 +262,4 @@ extension LoginViewController: LoginButtonDelegate {
             }
         }
     }
-    
-    
 }
