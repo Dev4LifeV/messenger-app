@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class RegisterViewController: UIViewController {
+    
+    private let spinner: JGProgressHUD = JGProgressHUD(style: .dark)
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -124,7 +127,13 @@ class RegisterViewController: UIViewController {
                 return
             }
             
+            strongSelf.spinner.show(in: strongSelf.view)
+            
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) {authResult, error in
+                
+                DispatchQueue.main.async {
+                    strongSelf.spinner.dismiss(animated: true)
+                }
                 
                 guard authResult != nil, error == nil else {
                     print("Error creating user \(String(describing: error?.localizedDescription))")
