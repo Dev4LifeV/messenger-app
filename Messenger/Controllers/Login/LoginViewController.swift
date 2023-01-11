@@ -10,8 +10,11 @@ import FirebaseAuth
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    
+    private let spinner: JGProgressHUD = JGProgressHUD(style: .dark)
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -86,10 +89,10 @@ class LoginViewController: UIViewController {
         
         emailField.delegate = self
         passwordField.delegate = self
-        
         facebookButton.delegate = self
-        
+    
         googleButton.addTarget(self, action: #selector(signInWithGoogle), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
@@ -126,10 +129,16 @@ class LoginViewController: UIViewController {
         
         //Firebase Log In
         
+        spinner.show(in: view)
+        
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             
             guard let strongSelf = self else {
                 return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss(animated: true)
             }
             
             guard let result = authResult, error == nil else {
@@ -146,7 +155,12 @@ class LoginViewController: UIViewController {
     }
     
    @objc func signInWithGoogle() {
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] result, error in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
             guard result != nil, error == nil else {
                 print("Failed to login with Google \(error?.localizedDescription)")
                 return
@@ -156,16 +170,24 @@ class LoginViewController: UIViewController {
             
             let credential = GoogleAuthProvider.credential(withIDToken: authResult.user.idToken?.tokenString ?? "", accessToken: authResult.user.accessToken.tokenString)
             
-            FirebaseAuth.Auth.auth().signIn(with: credential) { [weak self] result, error in
+            strongSelf.spinner.show(in: strongSelf.view)
+            
+            FirebaseAuth.Auth.auth().signIn(with: credential) { result, error in
                 
-                print("ERROR: \(error?.localizedDescription)")
+                DispatchQueue.main.async {
+                    strongSelf.spinner.dismiss(animated: true)
+                }
                 
                 guard result != nil, error == nil else {
                     return
                 }
                 
-                guard let strongSelf = self else {
-                    return
+                guard let userProfile = authResult.user.profile else { return }
+                
+                DatabaseManager.shared.userExists(with: userProfile.email) { exists in
+                    if !exists {
+                        DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: userProfile.givenName ?? "", lastName: userProfile.familyName ?? "", emailAddress: userProfile.email))
+                    }
                 }
                 
                 strongSelf.navigationController?.dismiss(animated: true)
@@ -220,7 +242,10 @@ extension LoginViewController: LoginButtonDelegate {
         
         let facebookRequest = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
         
-        facebookRequest.start { connection, result, error in
+        facebookRequest.start { [weak self] connection, result, error in
+            
+            guard let strongSelf = self else { return }
+            
             guard let result = result as? [String: Any], error == nil else {
                 print("Failed to make Facebook graph request")
                 return
@@ -248,9 +273,15 @@ extension LoginViewController: LoginButtonDelegate {
             
             let credential = FacebookAuthProvider.credential(withAccessToken: token)
             
+            strongSelf.spinner.show(in: strongSelf.view)
+            
             FirebaseAuth.Auth.auth().signIn(with: credential) { [weak self] authResult, error in
                 
                 guard let strongSelf = self else { return }
+                
+                DispatchQueue.main.async {
+                    strongSelf.spinner.dismiss(animated: true)
+                }
                 
                 guard authResult != nil, error == nil else {
                     print("Facebook credential login failed, MFA may be needed.")
