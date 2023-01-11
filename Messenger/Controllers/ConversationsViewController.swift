@@ -7,12 +7,42 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class ConversationsViewController: UIViewController {
+    
+    private let spinner = JGProgressHUD(style: .dark)
+    
+    private let tableView: UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.isHidden = false
+        return table
+    }()
+    
+    private let noConversationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No conversations"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        label.isHidden = true
+        return label
+    }()
+                       
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = view.bounds
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(didTapComposeButton))
+        view.addSubview(tableView)
+        view.addSubview(noConversationsLabel)
+        fetchConversations()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
        validateAuth()
     }
 
@@ -28,6 +58,36 @@ class ConversationsViewController: UIViewController {
         }
     }
     
+    @objc private func didTapComposeButton() {
+        let vc = NewConversationViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+    }
+    
+    private func fetchConversations() {
+        
+    }
 
 }
 
+extension ConversationsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Hello world!"
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let chatViewController = ChatViewController()
+        chatViewController.navigationItem.largeTitleDisplayMode = .never
+        
+        navigationController?.pushViewController(chatViewController, animated: true)
+    }
+}
